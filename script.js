@@ -1,27 +1,21 @@
-function sumDistinctElements(set1, set2) {
-    let distinctElements = [];
-    let sum = 0;
-  
-    
-    for (let element of set1) {
-      if (!set2.includes(element) && !distinctElements.includes(element)) {
-        distinctElements.push(element);
-        sum += element;
-      }
-    }
-  
-    
-    for (let element of set2) {
-      if (!set1.includes(element) && !distinctElements.includes(element)) {
-        distinctElements.push(element);
-        sum += element;
-      }
-    }
-
-    return sum;
+function dot_product(v1, v2) {
+  if (v1.length !== v2.length) {
+    throw new Error('Vectors must have the same length');
   }
-  
-  
-  let set1 = [3, 1, 7, 9];
-  let set2 = [2, 4, 1, 9, 3];
-  console.log(sumDistinctElements(set1, set2)); 
+  let result = 0;
+  for (let i = 0; i < v1.length; i++) {
+    result += v1[i] * v2[i];
+  }
+  return result;
+}
+function isOrthogonal(v1, v2) {
+  return dot_product(v1, v2) === 0;
+}
+
+const v1 = [3, 4, 5];
+const v2 = [7, 8, 9];
+const v3 = [1, 0, -2];
+const v4 = [2, 0, 1];
+
+console.log(isOrthogonal(v1, v2));
+console.log(isOrthogonal(v3, v4)); 
